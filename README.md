@@ -14,12 +14,15 @@ sudo systemctl start isc-dhcp-server
 sudo systemctl status isc-dhcp-server
 
 ip route
+
 sudo nano /etc/sysctl.conf  
+
 edit file
   net.ipv4.ip_forward=1
 
-for internet forwarding use masqurading
+####For internet forwarding use masqurading####
 Example from Ubuntu websites
+
 ufw - Uncomplicated Firewall
 The default firewall configuration tool for Ubuntu is ufw. Developed to ease iptables firewall configuration, ufw provides a user-friendly way to create an IPv4 or IPv6 host-based firewall.
 
@@ -32,21 +35,27 @@ The following are some examples of how to use ufw:
 First, ufw needs to be enabled. From a terminal prompt enter:
 
 sudo ufw enable
+
 To open a port (SSH in this example):
 
 sudo ufw allow 22
+
 Rules can also be added using a numbered format:
 
 sudo ufw insert 1 allow 80
+
 Similarly, to close an opened port:
 
 sudo ufw deny 22
+
 To remove a rule, use delete followed by the rule:
 
 sudo ufw delete deny 22
+
 It is also possible to allow access from specific hosts or networks to a port. The following example allows SSH access from host 192.168.0.2 to any IP address on this host:
 
 sudo ufw allow proto tcp from 192.168.0.2 to any port 22
+
 Replace 192.168.0.2 with 192.168.0.0/24 to allow SSH access from the entire subnet.
 
 Adding the –dry-run option to a ufw command will output the resulting rules, but not apply them. For example, the following is what would be applied if opening the HTTP port:
