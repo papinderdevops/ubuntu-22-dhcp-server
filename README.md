@@ -1,7 +1,7 @@
 # ubuntu-22-dhcp-server
-Ubuntu 22 isc-dhcp-server with netplan configuration 
-sudo netplan try
-sudo netplan apply
+#Ubuntu 22 isc-dhcp-server with netplan configuration 
+$sudo netplan try
+$sudo netplan apply
 sudo systemctl restart network-manager
 sudo systemctl restart system-networkd
 sudo systemctl start isc-dhcp-server
