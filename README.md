@@ -1,7 +1,8 @@
 # ubuntu-22-dhcp-server
 #Ubuntu 22 isc-dhcp-server with netplan configuration 
 
-netplan-config file: /etc/netplan
+netplan-config file: 
+    /etc/netplan
 
 sudo netplan try
 
@@ -9,9 +10,9 @@ sudo netplan apply
 
 DHCP config file:
 
-/etc/default/isc-dhcp-server
+    /etc/default/isc-dhcp-server
 
-/etc/dhcp/dhcpd.conf
+    /etc/dhcp/dhcpd.conf
 
 sudo systemctl restart network-manager
 
