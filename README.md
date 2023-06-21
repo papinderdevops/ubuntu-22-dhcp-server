@@ -2,6 +2,7 @@
 #Ubuntu 22 isc-dhcp-server with netplan configuration 
 
 netplan-config file: 
+
     /etc/netplan
 
 sudo netplan try
