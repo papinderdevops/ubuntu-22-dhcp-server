@@ -1,0 +1,56 @@
+---
+-
+  hosts: all
+  gather_facts: no
+  vars_files:
+    vars/main.yml
+
+  tasks:
+  - name: install isc-dhcp-server
+    apt:
+      name: isc-dhcp-server
+      state: present
+
+
+  - name: isc-dhcp-server.j2
+    template:
+      src: templates/isc-dhcp-server.j2
+      dest: /etc/default/isc-dhcp-server
+      mode: 0644
+      group: root
+      owner: root
+
+
+  - name: dhcpd.conf
+    template:
+      src: templates/dhcpd.conf.j2
+      dest: /etc/dhcp/dhcpd.conf
+      mode: 0644
+      group: root
+      owner: root
+
+
+  - name: netplan
+    template:
+      src: templates/01-network-manager-all.yaml.j2
+      dest: /etc/netplan/01-network-manager-all.yaml
+      mode: 0644
+      group: root
+      owner: root
+
+
+  - name: netplan apply
+    command: netplan apply
+
+  - name: start service dhcp
+    service:
+      name: isc-dhcp-server
+      state: restarted
+      enabled: true
+    notify: dhcp restart
+
+  handlers:
+    - name: dhcp restart
+      service:
+        name: isc-dhcp-server
+        state: restarted

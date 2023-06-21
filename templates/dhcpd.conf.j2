@@ -1,0 +1,14 @@
+# dhcpd.conf
+default-lease-time 600;
+max-lease-time 7200;
+ddns-update-style none;
+authoritative;
+
+subnet {{ subnet }} netmask {{ netmask }} {
+  range {{ range }};
+  option subnet-mask {{ subnet }};
+  option routers {{ routers }};
+  option broadcast-address {{ broadcast }};
+  option domain-name-servers {{ dns }};
+}
+
